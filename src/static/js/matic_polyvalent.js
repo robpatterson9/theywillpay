@@ -38,42 +38,42 @@ async function main() {
         rewardTokenFunction, rewardsPerBlockFunction, rewardsPerWeekFixed, pendingRewardsFunction,
         deathPoolIndices) {
         const chefContract = chef ?? new ethers.Contract(chefAddress, chefAbi, App.provider);
-      
+
         const poolCount = parseInt(await chefContract.poolLength(), 10);
         const totalAllocPoints = await chefContract._totalAllocPoint();
-      
-        _print(`Found ${poolCount} pools.\n`)
-      
-        _print(`Showing incentivized pools only.\n`);
-      
+
+        _print(`Found ${poolCount} cuck rugs.\n`)
+
+        _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+
         var tokens = {};
-      
+
         const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
         const rewardToken = await getMaticToken(App, rewardTokenAddress, chefAddress);
-        const rewardsPerWeek = rewardsPerWeekFixed ?? 
-          await chefContract.callStatic[rewardsPerBlockFunction]() 
+        const rewardsPerWeek = rewardsPerWeekFixed ??
+          await chefContract.callStatic[rewardsPerBlockFunction]()
           / 10 ** rewardToken.decimals * 604800 / 3
-      
+
         const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
           await getAtomPoolInfo(App, chefContract, chefAddress, x, pendingRewardsFunction)));
-      
+
         var tokenAddresses = [].concat.apply([], poolInfos.filter(x => x.poolToken).map(x => x.poolToken.tokens));
-      
+
         await Promise.all(tokenAddresses.map(async (address) => {
             tokens[address] = await getMaticToken(App, address, chefAddress);
         }));
-      
+
         if (deathPoolIndices) {   //load prices for the deathpool assets
           deathPoolIndices.map(i => poolInfos[i])
-                           .map(poolInfo => 
+                           .map(poolInfo =>
             poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "matic") : undefined);
         }
-      
+
         const poolPrices = poolInfos.map(poolInfo => poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "matic") : undefined);
-      
-      
+
+
         _print("Finished reading smart contracts.\n");
-        
+
         let aprs = []
         for (i = 0; i < poolCount; i++) {
           if (poolPrices[i]) {
@@ -105,7 +105,7 @@ async function main() {
         return { prices, totalUserStaked, totalStaked, averageApr }
       }
 
-    async function getAtomPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+    async function getAtomPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
       const poolInfo = await chefContract._poolInfo(poolIndex);
       if (poolInfo.allocPoint == 0) {
           return {
@@ -130,7 +130,7 @@ async function main() {
           withdrawFee : (poolInfo.withdrawFeeBP ?? 0) / 100
       };
     }
-    
+
     function printAtomPool(App, chefAbi, chefAddr, prices, tokens, poolInfo, poolIndex, poolPrices,
                           totalAllocPoints, rewardsPerWeek, rewardTokenTicker, rewardTokenAddress,
                           pendingRewardsFunction, fixedDecimals, claimFunction, chain="eth", depositFee=0, withdrawFee=0) {
@@ -181,15 +181,15 @@ async function main() {
     _print(`Staking or unstaking also claims rewards.`)
     _print("");
   }
-  
+
 
   const atomContract_unstake = async function(chefAbi, chefAddress, poolIndex, App, pendingRewardsFunction) {
     const signer = App.provider.getSigner()
     const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
-  
+
     const currentStakedAmount = (await CHEF_CONTRACT._userInfo(poolIndex, App.YOUR_ADDRESS)).amount
     const earnedTokenAmount = await CHEF_CONTRACT.callStatic[pendingRewardsFunction](poolIndex, App.YOUR_ADDRESS) / 1e18
-  
+
     if (earnedTokenAmount > 0) {
       showLoading()
       CHEF_CONTRACT.withdraw(poolIndex, currentStakedAmount, {gasLimit: 500000})

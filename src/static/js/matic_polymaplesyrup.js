@@ -7,9 +7,9 @@ const CHEF_ABI = [{"inputs":[{"internalType":"contract MapleSyrup","name":"_toke
 
 async function main() {
    const App = await init_ethers();
-   
+
    _print(`Initialized ${App.YOUR_ADDRESS}\n`);
-   
+
    const CHEF_ADDR = "0x6AD893d5f90115049B1849AaD1C153b0E99e7953";
    const rewardTokenTicker = "SYRUP";
    const CHEF = new ethers.Contract(CHEF_ADDR, CHEF_ABI, App.provider);
@@ -26,14 +26,14 @@ async function main() {
 
 async function loadMaticChefContract(App, tokens, prices, chef, chefAddress, chefAbi, rewardTokenTicker,
   rewardTokenFunction, rewardsPerBlockFunction, rewardsPerWeekFixed, pendingRewardsFunction) {
-  const chefContract = chef ?? new ethers.Contract(chefAddress, chefAbi, App.provider); 
+  const chefContract = chef ?? new ethers.Contract(chefAddress, chefAbi, App.provider);
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
-  
+
   _print("\n");
   _print("                               FARM                                ");
   _print("\n");
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
   var tokens = {};
 
@@ -80,7 +80,7 @@ async function loadMaticChefContract(App, tokens, prices, chef, chefAddress, che
   return { prices, totalUserStaked, totalStaked, averageApr }
 }
 
-async function getMaticPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+async function getMaticPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
   const poolInfo = await chefContract.poolInfo(poolIndex);
   if (poolInfo.allocPoint == 0) {
     return {

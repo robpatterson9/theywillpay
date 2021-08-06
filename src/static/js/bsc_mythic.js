@@ -50,9 +50,9 @@ async function loadMagicContract(App, tokens, prices, contract, contractAddress,
   const poolCount = 3;
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 
@@ -88,7 +88,7 @@ async function loadMythicContract(App, tokens, prices, contract, contractAddress
 
   _print(`Found 2 pools.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 

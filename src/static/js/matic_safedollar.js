@@ -32,7 +32,7 @@ async function main() {
     hideLoading();
   }
 
-  async function getSdsPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+  async function getSdsPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
   const poolInfo = await chefContract.poolInfo(poolIndex);
   if (poolInfo.allocPoint == 0) {
     return {
@@ -67,16 +67,16 @@ async function loadSdsChefContract(App, tokens, prices, chef, chefAddress, chefA
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 
   const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
   const rewardToken = await getMaticToken(App, rewardTokenAddress, chefAddress);
-  const rewardsPerWeek = rewardsPerWeekFixed ?? 
-    await chefContract.callStatic[rewardsPerBlockFunction]() 
+  const rewardsPerWeek = rewardsPerWeekFixed ??
+    await chefContract.callStatic[rewardsPerBlockFunction]()
     / 10 ** rewardToken.decimals * 604800 / 3
 
   const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
@@ -90,7 +90,7 @@ async function loadSdsChefContract(App, tokens, prices, chef, chefAddress, chefA
 
   if (deathPoolIndices) {   //load prices for the deathpool assets
     deathPoolIndices.map(i => poolInfos[i])
-                     .map(poolInfo => 
+                     .map(poolInfo =>
       poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "matic") : undefined);
   }
 
@@ -98,7 +98,7 @@ async function loadSdsChefContract(App, tokens, prices, chef, chefAddress, chefA
 
 
   _print("Finished reading smart contracts.\n");
-  
+
   let aprs = []
   for (i = 0; i < poolCount; i++) {
     if (poolPrices[i]) {
@@ -135,9 +135,9 @@ async function loadSdsChefContract(App, tokens, prices, chef, chefAddress, chefA
 
   const poolCount = parseInt(await chefContract.poolLength(), 10);
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
     await getSDSVaultInfo(App, chefContract, chefAddress, x)));
@@ -152,7 +152,7 @@ async function loadSdsChefContract(App, tokens, prices, chef, chefAddress, chefA
 
 
   _print("Finished reading smart contracts.\n");
-  
+
   for (i = 0; i < poolCount; i++) {
     if (poolPrices[i]) {
       printSDSVault(prices, tokens, poolInfos[i], i, poolPrices[i], rewardTokenTicker, null, "matic")
@@ -160,7 +160,7 @@ async function loadSdsChefContract(App, tokens, prices, chef, chefAddress, chefA
   }
 }
 
-async function getSDSVaultInfo(app, chefContract, chefAddress, poolIndex) {  
+async function getSDSVaultInfo(app, chefContract, chefAddress, poolIndex) {
   const poolInfo = await chefContract.poolInfo(poolIndex);
   const poolToken = await getMaticToken(app, poolInfo.want, chefAddress);
   const strat = new ethers.Contract(poolInfo.strategy, STRAT_ABI, app.provider);

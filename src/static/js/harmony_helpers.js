@@ -284,9 +284,9 @@ async function loadHarmonyChefContract(App, tokens, prices, chef, chefAddress, c
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 

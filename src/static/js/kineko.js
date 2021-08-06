@@ -28,9 +28,9 @@ async function loadKinekoContract(App, chef, chefAddress, chefAbi, rewardTokenTi
   const poolCount = parseInt(await chefContract.poolCount(), 10);
 
   _print(`<a href='https://etherscan.io/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 

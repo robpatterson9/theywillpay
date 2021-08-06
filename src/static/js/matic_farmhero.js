@@ -2470,9 +2470,9 @@ async function main() {
     const poolCount = parseInt(await chefContract.poolLength(), 10);
     const totalAllocPoints = await chefContract.totalAllocPoint(0);
 
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing incentivized pools only.\n`);
+    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
     var tokens = {};
 
@@ -2599,15 +2599,15 @@ function printHeroChefPool(App, chefAbi, chefAddr, prices, tokens, poolInfo, poo
 
 const farmhero_stake = async function(chefAbi, chefAddress, poolIndex, stakeTokenAddr, App) {
     const signer = App.provider.getSigner()
-  
+
     const STAKING_TOKEN = new ethers.Contract(stakeTokenAddr, ERC20_ABI, signer)
     const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
-  
+
     const currentTokens = await STAKING_TOKEN.balanceOf(App.YOUR_ADDRESS)
     const allowedTokens = await STAKING_TOKEN.allowance(App.YOUR_ADDRESS, chefAddress)
-  
+
     let allow = Promise.resolve()
-  
+
     if (allowedTokens / 1e18 < currentTokens / 1e18) {
       showLoading()
       allow = STAKING_TOKEN.approve(chefAddress, ethers.constants.MaxUint256)
@@ -2619,7 +2619,7 @@ const farmhero_stake = async function(chefAbi, chefAddress, poolIndex, stakeToke
           alert('Try resetting your approval to 0 first')
         })
     }
-  
+
     if (currentTokens / 1e18 > 0) {
       showLoading()
       allow
@@ -2646,9 +2646,9 @@ const farmhero_stake = async function(chefAbi, chefAddress, poolIndex, stakeToke
   const farmhero_unstake = async function(chefAbi, chefAddress, poolIndex, App, pendingRewardsFunction) {
     const signer = App.provider.getSigner()
     const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
-  
+
     const earnedTokenAmount = await CHEF_CONTRACT.callStatic[pendingRewardsFunction](poolIndex, App.YOUR_ADDRESS) / 1e18
-  
+
     if (earnedTokenAmount > 0) {
       showLoading()
       CHEF_CONTRACT.withdrawAll(poolIndex,  {gasLimit: 500000})
@@ -2664,9 +2664,9 @@ const farmhero_stake = async function(chefAbi, chefAddress, poolIndex, stakeToke
 const herofarm_claim = async function(chefAbi, chefAddress, poolIndex, App, pendingRewardsFunction) {
     const signer = App.provider.getSigner()
     const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
-  
+
     const earnedTokenAmount = await CHEF_CONTRACT.callStatic[pendingRewardsFunction](poolIndex, App.YOUR_ADDRESS) / 1e18
-  
+
     if (earnedTokenAmount > 0) {
       showLoading()
       CHEF_CONTRACT.withdraw(poolIndex, App.YOUR_ADDRESS, {gasLimit: 500000})

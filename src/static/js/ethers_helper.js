@@ -2064,7 +2064,7 @@ function getErc20Prices(prices, pool, chain="eth") {
       poolUrl=`https://blockscout.com/xdai/mainnet/tokens/${pool.address}`;
       break;
   }
-  
+
   const getDexguruTokenlink =  function() {
     const network = window.location.pathname.split("/")[1]
     let dexguruTokenlink = '';
@@ -2075,7 +2075,7 @@ function getErc20Prices(prices, pool, chain="eth") {
       if (chain && (chain.toLowerCase() === 'bsc' || chain.toLowerCase() === 'eth' || chain.toLowerCase() === 'polygon')) {
         dexguruTokenlink =   `<a href='https://dex.guru/token/${pool.address.toLowerCase()}-${chain.toLowerCase()}' rel='noopener' target='_blank'>[%]</a>`;
       }
-    }      
+    }
     return dexguruTokenlink
   }
 
@@ -2122,7 +2122,7 @@ function getCurvePrices(prices, pool) {
       if (network && (network.toLowerCase() === 'bsc' || network.toLowerCase() === 'eth' || network.toLowerCase() === 'polygon')) {
         dexguruTokenlink =   `<a href='https://dex.guru/token/${pool.address.toLowerCase()}-${network.toLowerCase()}' rel='noopener' target='_blank'>[%]</a>`;
       }
-    }      
+    }
     return dexguruTokenlink
   }
   return {
@@ -2276,9 +2276,9 @@ async function loadChefContract(App, chef, chefAddress, chefAbi, rewardTokenTick
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
   _print(`<a href='https://etherscan.io/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 

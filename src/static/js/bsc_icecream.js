@@ -45,7 +45,7 @@ async function main() {
 
     _print(`Found 1 more pool.\n`)
 
-    _print(`Showing incentivized pools only.\n`);
+    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
     var tokens = {};
 

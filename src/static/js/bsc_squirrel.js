@@ -20,7 +20,7 @@ async function main() {
   }
 
   async function loadSquirrelContracts(App) {
-      _print(`Showing incentivized pools only.\n`);
+      _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
       const prices = await getBscPrices();
       const tokens = {};

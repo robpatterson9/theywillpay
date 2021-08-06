@@ -31,7 +31,7 @@ const poolCount = 1;
 
 _print(`<a href='https://etherscan.io/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
 
-_print(`Showing incentivized pools only.\n`);
+_print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
 var tokens = {};
 

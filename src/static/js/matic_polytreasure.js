@@ -8,13 +8,13 @@ const TREASURY_ABI = [{"inputs":[{"internalType":"address","name":"_native","typ
 
 async function main() {
    const App = await init_ethers();
-   
+
    _print(`Initialized ${App.YOUR_ADDRESS}\n`);
 
    const TOKEN_ADDR = "0x13436a3c5c2574C8145222260B0ed4C2Da31f760";
    const TREASURY_ADDR = "0xEd8223dd1148C9fD3867d968696706cfa9376643";
    const WETH_ADDR = "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619";
-   const WBTC_ADDR = "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6";   
+   const WBTC_ADDR = "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6";
    const wethContract = new ethers.Contract(WETH_ADDR, ERC20_ABI, App.provider);
    const wbtcContract = new ethers.Contract(WBTC_ADDR, ERC20_ABI, App.provider);
    const eth = ethers.utils.formatUnits(await wethContract.balanceOf(TREASURY_ADDR), 18);
@@ -44,7 +44,7 @@ async function main() {
 	   const signer = App.provider.getSigner();
 	   const treasuryContract = new ethers.Contract(TREASURY_ADDR, TREASURY_ABI, signer);
 	   const tokenContract = new ethers.Contract(TOKEN_ADDR, ERC20_ABI, signer);
-	   
+
 	   const currentTokens = await tokenContract.balanceOf(App.YOUR_ADDRESS)
   const allowedTokens = await tokenContract.allowance(App.YOUR_ADDRESS, TREASURY_ADDR)
 
@@ -89,7 +89,7 @@ async function main() {
 	   const signer = App.provider.getSigner();
 	   const treasuryContract = new ethers.Contract(TREASURY_ADDR, TREASURY_ABI, signer);
 	   const tokenContract = new ethers.Contract(TOKEN_ADDR, ERC20_ABI, signer);
-	   
+
 	   const currentTokens = await tokenContract.balanceOf(App.YOUR_ADDRESS)
   const allowedTokens = await tokenContract.allowance(App.YOUR_ADDRESS, TREASURY_ADDR)
 
@@ -129,8 +129,8 @@ async function main() {
 	} else {
 		alert('Not enough tokens to claim (needs 10 TRZ)!!')
 	}
-   });   
-   
+   });
+
    const TRZ_CHEF_ADDR = "0x8ac02e8e228e91404f91c4951be7864653d503ac";
    const rewardTokenTicker = "TRZ";
    const TRZ_CHEF = new ethers.Contract(TRZ_CHEF_ADDR, TRZ_CHEF_ABI, App.provider);
@@ -147,14 +147,14 @@ async function main() {
 
 async function loadMaticTrzChefContract(App, tokens, prices, chef, chefAddress, chefAbi, rewardTokenTicker,
   rewardTokenFunction, rewardsPerBlockFunction, rewardsPerWeekFixed, pendingRewardsFunction) {
-  const chefContract = chef ?? new ethers.Contract(chefAddress, chefAbi, App.provider); 
+  const chefContract = chef ?? new ethers.Contract(chefAddress, chefAbi, App.provider);
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
-  
+
   _print("\n");
   _print("                               FARM                                ");
   _print("\n");
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
   var tokens = {};
 
@@ -201,7 +201,7 @@ async function loadMaticTrzChefContract(App, tokens, prices, chef, chefAddress, 
   return { prices, totalUserStaked, totalStaked, averageApr }
 }
 
-async function getMaticTrzPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+async function getMaticTrzPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
   const poolInfo = await chefContract.poolInfo(poolIndex);
   if (poolInfo.allocPoint == 0) {
     return {

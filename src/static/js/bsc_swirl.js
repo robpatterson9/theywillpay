@@ -53,7 +53,7 @@ async function loadSwirlChefContract0(App, tokens, prices, chef, chefAddress, ch
 
   _print(`<a href='https://bscscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 

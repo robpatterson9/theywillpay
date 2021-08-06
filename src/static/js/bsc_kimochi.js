@@ -30,9 +30,9 @@ async function main() {
 
     const poolCount = parseInt(await chefContract.poolLength(), 10);
 
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing incentivized pools only.\n`);
+    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
     var tokens = {};
 

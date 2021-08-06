@@ -43,18 +43,18 @@ async function loadBscChefContract(App, tokens, prices, chef, chefAddress, chefA
 
   const poolCount = 18;
   const totalAllocPoints = await chefContract.totalAllocPoint();
-    
-  _print(`<a href='https://bscscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`<a href='https://bscscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
+  _print(`Found ${poolCount} cuck rugs.\n`)
+
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 
   const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
   const rewardToken = await getBscToken(App, rewardTokenAddress, chefAddress);
-  const rewardsPerWeek = rewardsPerWeekFixed ?? 
-    await chefContract.callStatic[rewardsPerBlockFunction]() 
+  const rewardsPerWeek = rewardsPerWeekFixed ??
+    await chefContract.callStatic[rewardsPerBlockFunction]()
     / 10 ** rewardToken.decimals * 604800 / 3
   const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
     await getBscPoolInfo(App, chefContract, chefAddress, x, pendingRewardsFunction)));
@@ -67,14 +67,14 @@ async function loadBscChefContract(App, tokens, prices, chef, chefAddress, chefA
 
   if (deathPoolIndices) {   //load prices for the deathpool assets
     deathPoolIndices.map(i => poolInfos[i])
-                     .map(poolInfo => 
+                     .map(poolInfo =>
       poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "bsc") : undefined);
   }
 
   const poolPrices = poolInfos.map(poolInfo => poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "bsc") : undefined);
 
 
-  _print("Finished reading smart contracts.\n");    
+  _print("Finished reading smart contracts.\n");
 
   let aprs = []
   for (i = 0; i < poolCount; i++) {

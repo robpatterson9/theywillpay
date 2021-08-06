@@ -1,4 +1,4 @@
-const xdaiTokens = [ 
+const xdaiTokens = [
     { "id": "xdai","symbol": "xDAI","contract": "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d" },
     { "id": "weth","symbol": "WETH","contract": "0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1" },
     { "id": "lever-network","symbol": "LEV","contract": "0xaCb954Db4F51558016455cE9b1Ba32a5bd8b529d" },
@@ -15,7 +15,7 @@ async function getXdaiPrices() {
     return prices;
 }
 
-async function getXdaiUniPool(App, pool, poolAddress, stakingAddress) {    
+async function getXdaiUniPool(App, pool, poolAddress, stakingAddress) {
     let q0, q1;
     const reserves = await pool.getReserves();
     q0 = reserves._reserve0;
@@ -23,7 +23,7 @@ async function getXdaiUniPool(App, pool, poolAddress, stakingAddress) {
     const decimals = await pool.decimals();
     const token0 = await pool.token0();
     const token1 = await pool.token1();
-    return { 
+    return {
         symbol : await pool.symbol(),
         name : await pool.name(),
         address: poolAddress,
@@ -72,7 +72,7 @@ async function getXdai20(App, token, address, stakingAddress) {
 
 async function getXdaiStoredToken(App, tokenAddress, stakingAddress, type) {
   switch (type) {
-    case "uniswap": 
+    case "uniswap":
       const pool = new ethers.Contract(tokenAddress, UNI_ABI, App.provider);
       return await getXdaiUniPool(App, pool, tokenAddress, stakingAddress);
     case "xdai20":
@@ -112,20 +112,20 @@ async function getXdaiToken(App, tokenAddress, stakingAddress) {
 async function loadXdaiSynthetixPoolInfo(App, tokens, prices, stakingAbi, stakingAddress,
     rewardTokenFunction, stakeTokenFunction) {
       const STAKING_POOL = new ethers.Contract(stakingAddress, stakingAbi, App.provider);
-  
+
       if (!STAKING_POOL.callStatic[stakeTokenFunction]) {
         console.log("Couldn't find stake function ", stakeTokenFunction);
       }
       const stakeTokenAddress = await STAKING_POOL.callStatic[stakeTokenFunction]();
-  
+
       const rewardTokenAddress = await STAKING_POOL.callStatic[rewardTokenFunction]();
-  
+
       var stakeToken = await getXdaiToken(App, stakeTokenAddress, stakingAddress);
-  
+
       if (stakeTokenAddress.toLowerCase() === rewardTokenAddress.toLowerCase()) {
         stakeToken.staked = await STAKING_POOL.totalSupply() / 10 ** stakeToken.decimals;
       }
-  
+
       var newPriceAddresses = stakeToken.tokens.filter(x =>
         !getParameterCaseInsensitive(prices, x));
       var newPrices = await lookUpTokenPrices(newPriceAddresses);
@@ -142,37 +142,37 @@ async function loadXdaiSynthetixPoolInfo(App, tokens, prices, stakingAbi, stakin
           tokens[rewardTokenAddress] = await getXdaiToken(App, rewardTokenAddress, stakingAddress);
       }
       const rewardToken = getParameterCaseInsensitive(tokens, rewardTokenAddress);
-  
+
       const rewardTokenTicker = rewardToken.symbol;
-  
+
       const poolPrices = getPoolPrices(tokens, prices, stakeToken, "xdai");
 
-      if (!poolPrices) 
+      if (!poolPrices)
       {
         console.log(`Couldn't calculate prices for pool ${stakeTokenAddress}`);
         return null;
       }
-  
+
       const stakeTokenTicker = poolPrices.stakeTokenTicker;
-  
+
       const stakeTokenPrice =
           prices[stakeTokenAddress]?.usd ?? getParameterCaseInsensitive(prices, stakeTokenAddress)?.usd;
       const rewardTokenPrice = getParameterCaseInsensitive(prices, rewardTokenAddress)?.usd;
-  
+
       const periodFinish = await STAKING_POOL.periodFinish();
       const rewardRate = await STAKING_POOL.rewardRate();
       const weeklyRewards = (Date.now() / 1000 > periodFinish) ? 0 : rewardRate / 1e18 * 604800;
-  
+
       const usdPerWeek = weeklyRewards * rewardTokenPrice;
-  
+
       const staked_tvl = poolPrices.staked_tvl;
-  
+
       const userStaked = await STAKING_POOL.balanceOf(App.YOUR_ADDRESS) / 10 ** stakeToken.decimals;
-  
+
       const userUnstaked = stakeToken.unstaked;
-  
+
       const earned = await STAKING_POOL.earned(App.YOUR_ADDRESS) / 10 ** rewardToken.decimals;
-  
+
       return  {
         stakingAddress,
         poolPrices,
@@ -206,18 +206,18 @@ async function loadXdaiBasisFork(data) {
     var tokens = {};
     var prices = {};
     var totalStaked = 0;
-    
-    let p1 = await loadXdaiSynthetixPool(App, tokens, prices, data.PoolABI, 
+
+    let p1 = await loadXdaiSynthetixPool(App, tokens, prices, data.PoolABI,
         data.SharePool.address, data.SharePool.rewardToken, data.SharePool.stakeToken);
     totalStaked += p1.staked_tvl;
-    
+
     if (data.SharePool2) {
-      let p3 = await loadXdaiSynthetixPool(App, tokens, prices, data.PoolABI, 
+      let p3 = await loadXdaiSynthetixPool(App, tokens, prices, data.PoolABI,
           data.SharePool2.address, data.SharePool2.rewardToken, data.SharePool2.stakeToken);
       totalStaked += p3.staked_tvl;
     }
 
-    let p2 = await loadXdaiSynthetixPool(App, tokens, prices, data.PoolABI, 
+    let p2 = await loadXdaiSynthetixPool(App, tokens, prices, data.PoolABI,
         data.CashPool.address, data.CashPool.rewardToken, data.CashPool.stakeToken);
     totalStaked += p2.staked_tvl;
 
@@ -234,18 +234,18 @@ async function loadXdaiBasisFork(data) {
       if (data.Boardrooms) {
         for (const boardroom of data.Boardrooms) {
           let br = await loadBoardroom(App, prices, boardroom.address, data.Oracle, data.UniswapLP, data.Cash,
-              data.ShareTicker, data.CashTicker, data.ExpansionsPerDay, data.MaximumExpansion, 
+              data.ShareTicker, data.CashTicker, data.ExpansionsPerDay, data.MaximumExpansion,
               data.Decimals, boardroom.ratio, data.TargetMantissa);
           totalStaked += br.staked_tvl;
         }
       }
       else {
         let br = await loadBoardroom(App, prices, data.Boardroom, data.Oracle, data.UniswapLP, data.Cash,
-            data.ShareTicker, data.CashTicker, data.ExpansionsPerDay, data.MaximumExpansion, 
+            data.ShareTicker, data.CashTicker, data.ExpansionsPerDay, data.MaximumExpansion,
             data.Decimals, 1, data.TargetMantissa);
         totalStaked += br.staked_tvl;
       }
-    } 
+    }
 
     _print_bold(`Total staked: $${formatMoney(totalStaked)}`)
 
@@ -253,7 +253,7 @@ async function loadXdaiBasisFork(data) {
 }
 
 
-async function getXdaiPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+async function getXdaiPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
   const poolInfo = await chefContract.poolInfo(poolIndex);
   if (poolInfo.allocPoint == 0) {
     return {
@@ -285,16 +285,16 @@ async function loadXdaiChefContract(App, tokens, prices, chef, chefAddress, chef
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 
   const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
   const rewardToken = await getXdaiToken(App, rewardTokenAddress, chefAddress);
-  const rewardsPerWeek = rewardsPerWeekFixed ?? 
-    await chefContract.callStatic[rewardsPerBlockFunction]() 
+  const rewardsPerWeek = rewardsPerWeekFixed ??
+    await chefContract.callStatic[rewardsPerBlockFunction]()
     / 10 ** rewardToken.decimals * 604800 / 3
 
   const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
@@ -308,7 +308,7 @@ async function loadXdaiChefContract(App, tokens, prices, chef, chefAddress, chef
 
   if (deathPoolIndices) {   //load prices for the deathpool assets
     deathPoolIndices.map(i => poolInfos[i])
-                     .map(poolInfo => 
+                     .map(poolInfo =>
       poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "xdai") : undefined);
   }
 
@@ -350,7 +350,7 @@ async function loadXdaiChefContract(App, tokens, prices, chef, chefAddress, chef
 
 async function loadMultipleXdaiSynthetixPools(App, tokens, prices, pools) {
   let totalStaked  = 0, totalUserStaked = 0, individualAPRs = [];
-  const infos = await Promise.all(pools.map(p => 
+  const infos = await Promise.all(pools.map(p =>
       loadXdaiSynthetixPoolInfo(App, tokens, prices, p.abi, p.address, p.rewardTokenFunction, p.stakeTokenFunction)));
   for (const i of infos) {
     let p = await printSynthetixPool(App, i, "xdai");

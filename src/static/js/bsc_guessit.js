@@ -26,17 +26,17 @@ async function main() {
 
     hideLoading();
   }
-  
+
   async function loadBscGuessItChefContract(App, tokens, prices, chef, chefAddress, chefAbi, rewardTokenTicker,
     rewardTokenFunction, rewardsPerWeekFixed, pendingRewardsFunction) {
     const chefContract = chef ?? new ethers.Contract(chefAddress, chefAbi, App.provider);
-	
+
     const poolCount = parseInt((await chefContract.getPoolInfo()).length, 10);
     const totalAllocPoints = await chefContract.totalAllocationPoints();
 
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing incentivized pools only.\n`);
+    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
     var tokens = {};
 
@@ -65,7 +65,7 @@ async function main() {
     }
   }
 
-async function getBscGuessItPoolInfo(App, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+async function getBscGuessItPoolInfo(App, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
   const poolInfo = await chefContract.poolInfo(poolIndex);
   if (poolInfo.allocationPoints == 0 || poolInfo.accumlatedNativePerShare == 0) {
     return {

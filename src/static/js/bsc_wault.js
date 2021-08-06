@@ -63,9 +63,9 @@ async function loadBscWaultContract(App, tokens, prices, chef, chefAddress, chef
   const poolCount = 3;
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   _print(`There is a locking period for some pools, please check the site.\n`)
 

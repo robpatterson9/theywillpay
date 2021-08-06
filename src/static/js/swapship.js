@@ -84,7 +84,7 @@ consoleInit(main)
     const poolCount = await CAPTAIN_COOK.poolLength();
     const totalAllocPoints = await CAPTAIN_COOK.totalAllocPoint();
 
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
     var prices = {};
     var tokens = {};

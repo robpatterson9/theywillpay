@@ -44,17 +44,17 @@ async function main() {
     const rewardsPerWeek = await NDX_CHEF_REWARDS.getRewardsForBlockRange(startBlock, endBlock) / 1e18;
 
     //load the prices for chef pools
-    await loadSynthetixPoolInfo(App, tokens, prices, makePool("0x649A94e2b3010338508CF50865BaafB1FA07A32c").abi, 
-                                                     NdxContracts[0].address, 
-                                                     makePool("0x649A94e2b3010338508CF50865BaafB1FA07A32c").rewardTokenFunction, 
+    await loadSynthetixPoolInfo(App, tokens, prices, makePool("0x649A94e2b3010338508CF50865BaafB1FA07A32c").abi,
+                                                     NdxContracts[0].address,
+                                                     makePool("0x649A94e2b3010338508CF50865BaafB1FA07A32c").rewardTokenFunction,
                                                      makePool("0x649A94e2b3010338508CF50865BaafB1FA07A32c").stakeTokenFunction)
-    await loadSynthetixPoolInfo(App, tokens, prices, makePool("0x04834fe50be6954088d979a84be20913efca9118").abi, 
-                                                     NdxContracts[2].address, 
-                                                     makePool("0x04834fe50be6954088d979a84be20913efca9118").rewardTokenFunction, 
+    await loadSynthetixPoolInfo(App, tokens, prices, makePool("0x04834fe50be6954088d979a84be20913efca9118").abi,
+                                                     NdxContracts[2].address,
+                                                     makePool("0x04834fe50be6954088d979a84be20913efca9118").rewardTokenFunction,
                                                      makePool("0x04834fe50be6954088d979a84be20913efca9118").stakeTokenFunction)
-    await loadSynthetixPoolInfo(App, tokens, prices, makePool("0x08f0d214d6a80520f18e6837e2cc40899e67b5c0").abi, 
-                                                     NdxContracts[3].address, 
-                                                     makePool("0x08f0d214d6a80520f18e6837e2cc40899e67b5c0").rewardTokenFunction, 
+    await loadSynthetixPoolInfo(App, tokens, prices, makePool("0x08f0d214d6a80520f18e6837e2cc40899e67b5c0").abi,
+                                                     NdxContracts[3].address,
+                                                     makePool("0x08f0d214d6a80520f18e6837e2cc40899e67b5c0").rewardTokenFunction,
                                                      makePool("0x08f0d214d6a80520f18e6837e2cc40899e67b5c0").stakeTokenFunction)
 
     await loadIndexedChefContract(App, NDX_CHEF, NDX_CHEF_ADDR, NDX_CHEF_ABI,
@@ -76,9 +76,9 @@ async function loadIndexedChefContract(App, chef, chefAddress, chefAbi, rewardTo
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
   _print(`<a href='https://etherscan.io/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 

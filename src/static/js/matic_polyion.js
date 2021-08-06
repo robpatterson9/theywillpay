@@ -42,16 +42,16 @@ async function loadPolyionContract(App, tokens, prices, chef, chefAddress, chefA
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 
   const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
   const rewardToken = await getMaticToken(App, rewardTokenAddress, chefAddress);
-  const rewardsPerWeek = rewardsPerWeekFixed ?? 
-    await chefContract.callStatic[rewardsPerBlockFunction]() 
+  const rewardsPerWeek = rewardsPerWeekFixed ??
+    await chefContract.callStatic[rewardsPerBlockFunction]()
     / 10 ** rewardToken.decimals * 604800 / 3
 
   const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
@@ -65,7 +65,7 @@ async function loadPolyionContract(App, tokens, prices, chef, chefAddress, chefA
 
   if (deathPoolIndices) {   //load prices for the deathpool assets
     deathPoolIndices.map(i => poolInfos[i])
-                     .map(poolInfo => 
+                     .map(poolInfo =>
       poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "matic") : undefined);
   }
 
@@ -73,7 +73,7 @@ async function loadPolyionContract(App, tokens, prices, chef, chefAddress, chefA
 
 
   _print("Finished reading smart contracts.\n");
-  
+
   let aprs = []
   for (i = 0; i < poolCount; i++) {
     if (poolPrices[i]) {
@@ -105,7 +105,7 @@ async function loadPolyionContract(App, tokens, prices, chef, chefAddress, chefA
   return { prices, totalUserStaked, totalStaked, averageApr }
 }
 
-async function getPolyionPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {  
+async function getPolyionPoolInfo(app, chefContract, chefAddress, poolIndex, pendingRewardsFunction) {
     const poolInfo = await chefContract.poolInfo(poolIndex);
     if (poolInfo.allocPoint == 0 || poolInfo.lpToken == "0xD34F91d08767B1E0Ead2d7345b528821aD0CBB5f") {
       return {

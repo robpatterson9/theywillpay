@@ -28,7 +28,7 @@ async function loadStrudelChefContract(App, chefAddress, chefAbi, chefContract, 
   const poolCount = await chefContract.poolLength();
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
   var prices = {};
   var tokens = {};

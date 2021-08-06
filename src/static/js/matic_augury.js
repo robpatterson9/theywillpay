@@ -44,16 +44,16 @@ async function loadAuguryContract(App, tokens, prices, chef, chefAddress, chefAb
   const poolCount = parseInt(await chefContract.poolLength(), 10);
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing incentivized pools only.\n`);
+  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
 
   var tokens = {};
 
   const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
   const rewardToken = await getMaticToken(App, rewardTokenAddress, chefAddress);
-  const rewardsPerWeek = rewardsPerWeekFixed ?? 
-    await chefContract.callStatic[rewardsPerBlockFunction]() 
+  const rewardsPerWeek = rewardsPerWeekFixed ??
+    await chefContract.callStatic[rewardsPerBlockFunction]()
     / 10 ** rewardToken.decimals * 604800 / 3
 
   const poolInfos = await Promise.all([...Array(poolCount).keys()].map(async (x) =>
@@ -67,7 +67,7 @@ async function loadAuguryContract(App, tokens, prices, chef, chefAddress, chefAb
 
   if (deathPoolIndices) {   //load prices for the deathpool assets
     deathPoolIndices.map(i => poolInfos[i])
-                     .map(poolInfo => 
+                     .map(poolInfo =>
       poolInfo.poolToken ? getPoolPrices(tokens, prices, poolInfo.poolToken, "matic") : undefined);
   }
 
@@ -75,7 +75,7 @@ async function loadAuguryContract(App, tokens, prices, chef, chefAddress, chefAb
 
 
   _print("Finished reading smart contracts.\n");
-  
+
   let aprs = []
   for (i = 0; i < poolCount; i++) {
     if (poolPrices[i]) {
@@ -161,17 +161,17 @@ function printAuguryContractLinks(App, chefAbi, chefAddr, poolIndex, poolAddress
 
   const auguryContract_stake = async function(chefAbi, chefAddress, poolIndex, stakeTokenAddr, App) {
     const signer = App.provider.getSigner()
-  
+
     const STAKING_TOKEN = new ethers.Contract(stakeTokenAddr, ERC20_ABI, signer)
     const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
-  
+
     const currentTokens = await STAKING_TOKEN.balanceOf(App.YOUR_ADDRESS)
     const allowedTokens = await STAKING_TOKEN.allowance(App.YOUR_ADDRESS, chefAddress)
-  
+
     const refAddress = "0x0000000000000000000000000000000000000000"
-  
+
     let allow = Promise.resolve()
-  
+
     if (allowedTokens / 1e18 < currentTokens / 1e18) {
       showLoading()
       allow = STAKING_TOKEN.approve(chefAddress, ethers.constants.MaxUint256)
@@ -183,7 +183,7 @@ function printAuguryContractLinks(App, chefAbi, chefAddr, poolIndex, poolAddress
           alert('Try resetting your approval to 0 first')
         })
     }
-  
+
     if (currentTokens / 1e18 > 0) {
       showLoading()
       allow

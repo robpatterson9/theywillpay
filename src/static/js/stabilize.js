@@ -69,7 +69,7 @@ consoleInit(main)
 
     const poolCount = await OPERATOR.poolLength();
 
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
     var prices = {};
     var tokens = {};
