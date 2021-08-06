@@ -61,7 +61,7 @@ async function loadSupraDollarChefContract(App, tokens, prices, chef, chefAddres
   _print(`<a href='https://bscscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
   _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+  _print(`Showing incentive pools  only...\n`);
 
   var tokens = {};
 

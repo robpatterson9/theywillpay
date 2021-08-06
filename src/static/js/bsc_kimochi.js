@@ -32,7 +32,7 @@ async function main() {
 
     _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+    _print(`Showing incentive pools  only...\n`);
 
     var tokens = {};
 

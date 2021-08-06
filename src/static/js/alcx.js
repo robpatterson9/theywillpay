@@ -213,7 +213,7 @@ $(function() {
     _print(`<a href='https://etherscan.io/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
     _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+    _print(`Showing incentive pools  only...\n`);
 
     let tokens = {};
 

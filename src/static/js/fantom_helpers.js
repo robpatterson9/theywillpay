@@ -397,7 +397,7 @@ async function loadFantomChefContract(App, tokens, prices, chef, chefAddress, ch
   _print(`<a href='https://ftmscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
   _print(`Found ${poolCount} cuck rugs.\n`)
 
-  _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+  _print(`Showing incentive pools  only...\n`);
 
   const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
   const rewardToken = await getFantomToken(App, rewardTokenAddress, chefAddress);
@@ -466,7 +466,7 @@ async function loadSteakChefContract(App, tokens, prices, chef, chefAddress, che
 
     _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+    _print(`Showing incentive pools  only...\n`);
 
     const rewardTokenAddress = await chefContract.callStatic[rewardTokenFunction]();
     const rewardToken = await getFantomToken(App, rewardTokenAddress, chefAddress);

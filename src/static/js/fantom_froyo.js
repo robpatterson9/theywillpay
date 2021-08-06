@@ -40,7 +40,7 @@ async function main() {
     _print(`<a href='https://ftmscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
     _print(`Found ${poolCount} cuck rugs.\n`)
 
-    _print(`Showing RUG CUNT CUCK FUCKS only...\n`);
+    _print(`Showing incentive pools  only...\n`);
 
     const rewardTokenAddress = tokenRewardsAddress;
     const rewardToken = await getFantomToken(App, rewardTokenAddress, chefAddress);
