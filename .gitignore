@@ -184,7 +184,7 @@ typings/
 
 # dotenv environment variables file
 .env
-dist/
+
 
 # exclude backup files
 *~
