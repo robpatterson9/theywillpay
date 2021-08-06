@@ -26,6 +26,9 @@
     "prettier": "prettier --write 'src/**/*.{js,css,scss,json,html}'",
     "deploy": "gh-pages -d dist"
   },
+
+
+
   "author": "Jongseung Lim",
   "license": "MIT",
   "devDependencies": {
