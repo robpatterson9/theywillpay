@@ -65,7 +65,7 @@ async function getBluePoolInfo(App, chefContract, chefAddress, poolIndex, pendin
     const totalAllocPoints = await chefContract.totalAllocPoint();
 
     _print(`<a href='https://bscscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
     _print(`Showing incentive pools  only...\n`);
 

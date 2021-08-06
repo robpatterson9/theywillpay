@@ -50,7 +50,7 @@ consoleInit(main)
   const totalAllocPoints = await chefContract.totalXFactor() / 1e18;
 
   _print(`<a href='https://etherscan.io/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
   _print(`Showing incentive pools  only...\n`);
 

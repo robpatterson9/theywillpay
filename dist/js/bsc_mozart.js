@@ -45,7 +45,7 @@ async function loadPianoContract(App, tokens, prices, chef, chefAddress, chefAbi
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
   _print(`<a href='https://bscscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
   _print(`Showing incentive pools  only...\n`);
 

@@ -349,7 +349,7 @@ async function loadOkexChefContract(App, tokens, prices, chef, chefAddress, chef
   const totalAllocPoints = await chefContract.totalAllocPoint();
 
   _print(`<a href='https://ftmscan.com/address/${chefAddress}' target='_blank'>Staking Contract</a>`);
-  _print(`Found ${poolCount} pools.\n`)
+  _print(`Found ${poolCount} cuck rugs.\n`)
 
   _print(`Showing incentive pools  only...\n`);
 
@@ -418,7 +418,7 @@ async function loadSteakChefContract(App, tokens, prices, chef, chefAddress, che
     const poolCount = parseInt(await chefContract.poolLength(), 10);
     const totalAllocPoints = await chefContract.totalAllocPoint();
 
-    _print(`Found ${poolCount} pools.\n`)
+    _print(`Found ${poolCount} cuck rugs.\n`)
 
     _print(`Showing incentive pools  only...\n`);
 
